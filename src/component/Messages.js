@@ -1,0 +1,20 @@
+import React from "react";
+import Message from "./Messages";
+import { Link, Route } from "react-router-dom";
+
+const Messages = ({ match }) => (
+  <div>
+    <ul>
+      {[...Array(5).keys()].map(n => {
+        return (
+          <li key={n}>
+            <Link to={`${match.url}/${n + 1}`}>Message {n + 1}</Link>
+          </li>
+        );
+      })}
+    </ul>
+    <Route path={`${match.url}/:id`} component={Message} />
+  </div>
+);
+
+export default Messages;
